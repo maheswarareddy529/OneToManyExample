@@ -41,6 +41,19 @@ public class Doctor {
 	public void setPatientList(List<Patient> patientList) {
 		this.patientList = patientList;
 	}
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Doctor [docId=");
+		builder.append(docId);
+		builder.append(", docName=");
+		builder.append(docName);
+		builder.append(", patientList=");
+		builder.append(patientList);
+		builder.append("]");
+		return builder.toString();
+	}
+	
 	
 	
 }

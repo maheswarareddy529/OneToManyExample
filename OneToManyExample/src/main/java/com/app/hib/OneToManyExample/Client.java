@@ -11,13 +11,33 @@ import org.hibernate.cfg.Configuration;
 import com.app.hib.model.Doctor;
 import com.app.hib.model.Patient;
 
-public class App 
-{
+public class Client { 
+	
+	public static Doctor getDoctorById(int did) {
+		Doctor doctor = null;
+		try {
+			Configuration cfg = new Configuration().configure();
+	        SessionFactory sf = cfg.buildSessionFactory();
+	        Session s = sf.openSession();
+	        doctor = (Doctor) s.get(Doctor.class, did);
+	        /*List<Patient> patient = doctor.getPatientList();
+	        System.out.println(patient);*/
+	        return doctor;
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return doctor;
+	}
+	
     public static void main( String[] args )
     {
         System.out.println( "Hello World!" );
-        
-        Configuration cfg = new Configuration().configure();
+        System.out.println(getDoctorById(1));
+       // insertDetails();
+    }
+
+	public static void insertDetails() {
+		Configuration cfg = new Configuration().configure();
         SessionFactory sf = cfg.buildSessionFactory();
         Session s = sf.openSession();
         Transaction tx = s.beginTransaction();
@@ -52,5 +72,5 @@ public class App
         s.save(doctor1);
         
         tx.commit();
-    }
+	}
 }
