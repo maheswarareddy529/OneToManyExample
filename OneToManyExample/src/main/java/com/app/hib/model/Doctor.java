@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(schema="practice")
 public class Doctor {
@@ -20,7 +22,7 @@ public class Doctor {
 	private String docName;
 	
 	@OneToMany(cascade=CascadeType.ALL,mappedBy="doctor")
-	
+	@JsonManagedReference
 	private List<Patient> patientList;
 	
 	public int getDocId() {
