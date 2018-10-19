@@ -11,7 +11,7 @@ import org.hibernate.cfg.Configuration;
 import com.app.hib.model.Doctor;
 import com.app.hib.model.Patient;
 
-public class Client { 
+public class HibernateClient { 
 	
 	public static Doctor getDoctorById(int did) {
 		Doctor doctor = null;
